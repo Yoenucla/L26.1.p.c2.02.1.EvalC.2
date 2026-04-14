@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curso - Bootstrap</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div id="app-bootstrap" class="container mt-5">
+    <h2>La Empresa (Bootstrap Estilizado)</h2>
+    <button type="button" class="btn btn-primary" id="body_btNuevoEmpleado">Nuevo Empleado</button>
+    <hr>
+    <div class="alert alert-info">
+      El empleado con mayor aumento es: <span id="body_lblNombreMayorAumento" class="fw-bold">N/A</span>
+    </div>
+    <div class="alert alert-success">
+      La nómina nueva es: <span id="body_lblNuevaNomina" class="fw-bold">0</span>$
+    </div>
+  </div>
+
+  <div class="modal fade" id="empleado" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Procesar Alumno</h5>
+        </div>
+        <div class="modal-body">
+          <label class="form-label">Nombre:</label>
+          <input type="text" class="form-control" id="empleado_inNombre">
+          <label class="form-label">Cedula:</label>
+          <input type="number" class="form-control" id="empleado_inCedula">
+          <label class="form-label">Sueldo Actual:</label>
+          <input type="number" class="form-control" id="empleado_inSueldoActual">
+          <label class="form-label">Años Trabajados:</label>
+          <input type="number" class="form-control" id="empleado_inAnTrabajados">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="empleado_btCancelar">Cancelar</button>
+          <button type="button" class="btn btn-success" id="empleado_btAceptar">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script type="module">
+    import Cl_cEmpresa from "./dist/controllers/Cl_cEmpresa.js";
+    import Cl_cEmpleado from "./dist/controllers/Cl_cEmpleado.js";
+
+    import Cl_vEmpresaBootstrap from "./dist/views/Cl_vEmpresaBootstrap.js";
+    import Cl_vEmpleadoBootstrap from "./dist/views/Cl_vEmpleadoBootstrap.js";
+
+    const vistaEmpresa = new Cl_vEmpresaBootstrap();
+    const vistaEmpleado = new Cl_vEmpleadoBootstrap();
+
+    const controladorEmpleado = new Cl_cEmpleado(vistaEmpleado);
+    new Cl_cEmpresa(vistaEmpresa, controladorEmpleado);
+  </script>
+</body>
+
+</html>
